@@ -26,3 +26,5 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->nam
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'isloggedin'])->name('haslogin');
 
+//M1 Aufgabe 10
+Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'search']);
