@@ -1,5 +1,5 @@
-<form method="GET" action="articles">
-    <input type="text" name="search" @if($_GET['search'] != null) value="{{$_GET['search']}}" @else placeholder="Suchbegriff" @endif>
+<form method="GET" action="/articles">
+    <input type="text" name="search" @if($search != null) value="{{$search}}" @else placeholder="Suchbegriff" @endif>
     <input type="submit">
 </form>
 
@@ -18,8 +18,10 @@
             <td>
 
                 @if(file_exists("assets/img/$result->id.jpg"))
-                    <img src="assets/img/{{$result->id}}.jpg">
-                    @endif
+                    <img src="assets/img/{{$result->id}}.jpg" alt="alt">
+                @elseif(file_exists("assets/img/$result->id.png"))
+                    <img src="assets/img/{{$result->id}}.png" alt="alt">
+                @endif
             </td>
             <td>{{$result->article_name}}</td>
             <td>{{$result->article_price}}</td>

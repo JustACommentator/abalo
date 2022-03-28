@@ -17,6 +17,6 @@ class AbaloController extends Controller
                 'id', 'article_name', 'article_price', 'ab_createdate', 'seller')
                 ->where("article_name", "ilike", "%$search%")->get();
         }
-        return view('searchView', ["search" => $_GET['search']??null, "results" => $results]);
+        return view('searchView', ["search" => $search, "results" => $results]);
     }
 }
