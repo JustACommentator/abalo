@@ -1,0 +1,3 @@
+Built-in-preview
+CTRL + W for next biggest logical selection
+CTRL + mouse hover for variable information

@@ -1,0 +1,14 @@
+C++________________________|_______________________JS
+Compiled                   |              Interpreted
+Standalone apps            |       No standalone apps
+Mid-level                  |               High-level
+Statically typed           |        dynamically typed
+built for everything       |        Built for the web
+generally faster           |         generally slower
+
+used in games              |            used in games
+similar syntax             |           similar syntax (somewhat)
+Single inheritance: yes    |  Single inheritance: yes
+Polymorphism: yes          |        Polymorphism: yes
+Encapsulation: yes         |        Encpsulation: yes
+Abstraction: yes           |         Abstraction: yes

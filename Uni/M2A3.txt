@@ -1,0 +1,8 @@
+With 59% in total market share as of December 2021, Google chrome is by far the most popular webbrowser for desktop, followed by Safari with 17% and Edge with 15%
+
+Chrome is also the leading mobile browser, as of january 2022, it holds 61% marketshare worldwide, followed by Apple's Safari with 25%
+
+Developing Abalo for the Firefox browser will yield the best results, as, of all the most popular browsers, Firefox offers the least compatibility with modern technologies,
+but it still offers everything one needs to implement a site like Abalo.
+The mobile browser market is dominated by Chrome and Safari. Since both of which offer greater compatibility with modern technologies than Firefox, Firefox remains the most
+logical option

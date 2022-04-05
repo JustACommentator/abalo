@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    'use strict';
+
+    console.warn("a)");
+    let arr = ["erstes", "zweites", 3, 4];
+
+    let i;
+    console.info("first loop");
+    for(i = 0; i < arr.length; i++) {
+        console.log(i + " => " + arr[i]);
+    }
+
+    let k = 0;
+    console.info("second loop");
+    while(k < arr.length) {
+        console.log(k + " => " + arr[k]);
+        k++;
+    }
+
+    console.info("third loop");
+    arr.forEach(elem => console.log(arr.indexOf(elem) + " => " + elem));
+
+
+    console.warn("b)");
+    arr.push("fünftes", 6, 7, "achtes");
+    console.log(arr);
+    arr.pop();
+    console.log(arr);
+    arr[2] = 2;
+    console.log(arr);
+
+    console.warn("c)");
+
+    console.log(arr.length);
+    let brr = [3,1,5,4,2,7,6,9,8];
+    console.log(brr.sort(function (a,b) {
+        return a - b;
+    }))
+
+    console.log(brr.find(elem => elem % 4 === 1 && elem !== 1));
+
+    console.log(brr.filter(elem => elem % 2 === 0));
+
+    console.log(brr.map(elem => elem * elem));
+
+    console.log(brr.slice(2,5));
+</script>
+
+</body>
+</html>

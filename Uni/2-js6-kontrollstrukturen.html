@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    'use strict';
+    let i;
+    for (i = 0; i < 10; i++) {
+        let k = 0;
+        while (k < 10) {
+            let m = 0;
+            do {
+                if (m % 2 === 0 && m !== 0) {
+                    console.log("Gerade: " + m);
+                } else if (m % 3 === 0) {
+                    console.log("Teilbar durch 3: " + m);
+                } else {
+                    switch (m) {
+                        case 0:
+                            console.log("m = " + m);
+                            break;
+                        case 1:
+                            console.log("m = " + m);
+                            break;
+                        case 5:
+                            console.log("m = " + m);
+                            break;
+                        case 7:
+                            console.log("m = " + m);
+                            break;
+                        default:
+                            console.error("how did we end up here?");
+                    }
+                }
+                m++
+            } while (m < 10);
+            k++;
+        }
+    }
+
+</script>
+
+</body>
+</html>
