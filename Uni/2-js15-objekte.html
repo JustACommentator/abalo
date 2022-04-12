@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    "using strict";
+
+    let carJson = {
+        name: "BMW",
+        type: "Sedan",
+        setName: function(_name) {
+            this.name = _name;
+        },
+        getName: function() {
+            return this.name;
+        },
+        setType: function(_type) {
+            this.type = _type;
+        },
+        getType: function() {
+            return this.type;
+        },
+        writeToConsole: function() {
+            console.log("name= " + this.name + ", type= " + this.type);
+        }
+    }
+
+    carJson.writeToConsole();
+    console.log(carJson);
+
+    function carFunction() {
+        this.name = "BMW";
+        this.type = "Sedan";
+        this.setName = function(_name) {
+            this.name = _name;
+        }
+        this.getName = function() {
+            return this.name;
+        }
+        this.setType = function(_type) {
+            this.type = _type;
+        }
+        this.getType = function() {
+            return this.type;
+        }
+        this.writeToConsole = function() {
+            console.log("name= " + this.name + ", type= " + this.type);
+        }
+    }
+
+    let carfunc = new carFunction();
+    carfunc.writeToConsole();
+    console.log(carfunc);
+
+    class carClass {
+        _name = "BMW";
+        _type = "Sedan";
+
+        set name(name) {
+            this._name = name;
+        }
+        get name() {
+            return this._name;
+        }
+        set type(type) {
+            this._type = type;
+        }
+        get type() {
+            return this._type;
+        }
+        writeToConsole() {
+            console.log("name= " + this._name + ", type= " + this._type);
+        }
+    }
+
+    let carC = new carClass;
+    carC.writeToConsole();
+    console.log(carC);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a id="example"></a>
+
+
+<script type="text/javascript">
+
+    "use strict";
+    let form = document.createElement('form');
+
+    let textInput = document.createElement('input');
+    textInput.setAttribute('type', 'text');
+    textInput.setAttribute('name', 'attribut1');
+
+    let optionInput = document.createElement('select');
+
+    let option1 = document.createElement('option');
+    option1.setAttribute('value','1');
+    option1.innerHTML = 1;
+
+    let option2 = document.createElement('option');
+    option2.setAttribute('value','2');
+    option2.innerHTML = 2;
+
+    optionInput.append(option1);
+    optionInput.append(option2);
+    form.append(textInput);
+    form.append(optionInput);
+
+    document.getElementById('example').append(form);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    "use strict";
+
+    let container = document.createElement('div');
+    container.className = 'rectangle';
+    container.innerHTML = 'Lorem Ipsum'
+    container.setAttribute('style', 'font-size: 400px; color: white; text-align: center; display: flex; align-items: center; justify-content: center; position: fixed; bottom: 0;');
+
+    let style = document.createElement('style');
+    style.innerHTML = '.rectangle { width: 100%; height: 50%; background: red; }';
+    document.getElementsByTagName('head')[0].append(style);
+
+    document.getElementsByTagName('body')[0].append(container);
+
+    document.getElementsByTagName('body')[0].setAttribute('style', 'margin: 0;');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="exampleID">
+    unchanged
+</div>
+<div class="exampleClass">
+    unchanged
+</div>
+<div name="exampleName">
+    unchanged
+</div>
+<a>
+    unchanged
+</a>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    "use strict";
+    document.getElementById('exampleID').innerHTML = '<b>changed</b>';
+    document.getElementsByClassName('exampleClass')[0].innerText = '<b>changed</b>';
+    document.getElementsByName('exampleName')[0].innerHTML = '<b>changed</b>';
+    document.getElementsByTagName('a')[0].innerText = '<b>changed</b>';
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #example {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            height: 700px;
+            width: 700px;
+            background: red;
+            border-radius: 350px;
+            font-family: 'Brush Script MT', cursive;
+            text-align: center;
+            font-size: 150px;
+            line-height: 700px
+        }
+    </style>
+</head>
+<body>
+
+<div id="example">Japan</div>
+
+<script type="text/javascript">
+
+    "use strict";
+    window.setInterval(function() {
+        if(document.body.style.backgroundColor == "darkgreen") {
+            document.body.style.backgroundColor = "white";
+            document.getElementById("example").innerHTML = "Japan";
+        }
+        else {
+            document.body.style.backgroundColor = "darkgreen";
+            document.getElementById("example").innerHTML = "Bangladesch";
+        }
+    }, 1000);
+
+
+
+</script>
+
+</body>
+</html>

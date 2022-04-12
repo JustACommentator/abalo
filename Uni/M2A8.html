@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #cookieBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #151515;
+            color: white;
+            font-size: 20px;
+            font-family: Arial;
+            height:75px;
+            line-height: 75px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        #acceptButton {
+            font-size: 20px;
+            font-family: Arial;
+        }
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            padding-left: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cookieBanner">
+    Diese Seite benutzt Cookies, um ihre Dienste anzubieten. Mit dem Verwenden dieser Seite stimmen Sie der Verwendung von Cookies zu.
+    <span class="vertical-center">
+    <button id="acceptButton" type="button" onclick="acceptedCookies()">Akzeptieren</button>
+    </span>
+</div>
+
+
+<script type="text/javascript" src="../public/assets/js/cookiecheck.js"/>
+
+</body>
+</html>

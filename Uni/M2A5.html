@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var data = {
+        'produkte': [
+            {name: 'Ritterburg', preis: 59.99, kategorie: 1, anzahl: 3},
+            {name: 'Gartenschlauch 10m', preis: 6.50, kategorie: 2, anzahl: 5},
+            {name: 'Robomaster', preis: 199.99, kategorie: 1, anzahl: 2},
+            {name: 'Pool 250x400', preis: 250, kategorie: 2, anzahl: 8},
+            {name: 'Rasenmähroboter', preis: 380.95, kategorie: 2, anzahl: 4},
+            {name: 'Prinzessinnenschloss', preis: 59.99, kategorie: 1, anzahl: 5}
+        ],
+        'kategorien': [
+            {id: 1, name: 'Spielzeug'},
+            {id: 2, name: 'Garten'}
+        ]
+    };
+
+    function getMaxPreis(_data) {
+        let result = _data['produkte'].sort(function (a, b) {
+            return a.preis - b.preis;
+        });
+        return result.reverse()[0].name;
+    }
+
+    function getMinPreisProdukt(_data) {
+        let result = _data['produkte'].sort(function (a, b) {
+            return a.preis - b.preis;
+        });
+        return result[0];
+    }
+
+    function getPreisSum(_data) {
+        let result = 0;
+        _data['produkte'].forEach(product => result += product.preis);
+        return result;
+    }
+
+    function getGesamtWert(_data) {
+        let result = 0;
+        _data['produkte'].forEach(product => result += (product.preis * product.anzahl));
+        return result;
+    }
+
+    function getAnzahlProdukteOfKategorie(_data, category) {
+        let catID = _data['kategorien'].find(_category => _category.name == category).id;
+        let amount = 0;
+        _data['produkte'].forEach(product => {
+            if(product.kategorie == catID)
+                amount += product.anzahl;
+        })
+        return amount;
+    }
+
+    console.log(getMaxPreis(data));
+    console.log(getMinPreisProdukt(data));
+    console.log(getPreisSum(data));
+    console.log(getGesamtWert(data));
+    console.log(getAnzahlProdukteOfKategorie(data, 'Garten'));
+
+</script>
+
+</body>
+</html>
