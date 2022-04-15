@@ -28,3 +28,6 @@ Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'islogged
 
 //M1 Aufgabe 10
 Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'search']);
+
+//M2AA9
+Route::get('/newarticle', [\App\Http\Controllers\AbaloController::class, 'newArticle']);
