@@ -5,5 +5,8 @@
     background: #e2e8f0;
 
     width: 500px;
-    height: 350px;
+}
+
+#headRow {
+    font-weight: bold;
 }

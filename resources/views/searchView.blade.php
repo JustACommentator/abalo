@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Artikelsuche</title>
-    <link rel="stylesheet" href="/resources/css/shoppingCart.css">
+    <link rel="stylesheet" href="./assets/css/shoppingCart.css">
 </head>
 <body>
 
@@ -46,6 +46,7 @@
                 tdDelete.addEventListener("click", function () {
                     //TODO: Delete item from this._content
                     event.target.parentNode.remove();
+                    shoppingCart._content.splice(shoppingCart._content.indexOf(this.parentElement.children[0].innerHTML),1);
                 })
                 document.getElementById("shoppingTable").append(tr);
             }
@@ -74,7 +75,7 @@
 
 <div id="shoppingCart">
     <table id="shoppingTable">
-        <tr>
+        <tr id="headRow">
             <td>Name</td>
             <td>Preis[€]</td>
             <td>Entfernen</td>
