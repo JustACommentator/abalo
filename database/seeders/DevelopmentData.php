@@ -24,7 +24,6 @@ class DevelopmentData extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
             if (!$firstline) {
                 AbUser::create([
-                    //"id" => $data['0'],
                     "ab_name" => $data['1'],
                     "ab_password" => $data['2'],
                     "ab_mail" => $data['2'],
@@ -42,7 +41,6 @@ class DevelopmentData extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
             if (!$firstline) {
                 AbArticle::create([
-                    //"id" => $data['0'],
                     "ab_name" => $data['1'],
                     "ab_price" => (int)$data['2'],
                     "ab_description" => $data['3'],
@@ -60,7 +58,6 @@ class DevelopmentData extends Seeder
             if (!$firstline) {
                 $data['2'] = $data['2'] != 'NULL' ? (int)$data['2'] : null; // convert to null if false, else value
                 AbArticleCategory::create([
-                    //"id" => $data['0'],
                     "ab_name" => $data['1'],
                     "ab_parent" => $data['2'],
 
