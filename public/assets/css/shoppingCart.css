@@ -1,0 +1,12 @@
+#shoppingCart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e2e8f0;
+
+    width: 500px;
+}
+
+#headRow {
+    font-weight: bold;
+}
