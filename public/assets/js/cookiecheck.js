@@ -8,7 +8,7 @@ function acceptedCookies() {
 } //accepts cookies if user accepts
 
 function hideBanner() {
-    document.getElementById("cookieBanner").style.display = "none";
+    document.m("cookieBanner").style.display = "none";
 } //hides banner
 
 function setCookie(cookieName, cookieValue, expiresInDays) {
