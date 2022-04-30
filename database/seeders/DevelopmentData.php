@@ -26,7 +26,7 @@ class DevelopmentData extends Seeder
                 AbUser::create([
                     "ab_name" => $data['1'],
                     "ab_password" => $data['2'],
-                    "ab_mail" => $data['2'],
+                    "ab_email" => $data['2'],
 
                 ]);
             }

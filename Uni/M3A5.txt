@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+|       Konstrukt\Engine         |JavaScriptCore| V8 |SpiderMonkey|
+|--------------------------------|--------------|----|------------|
+|Array.prototype.flat(depth)     | ja           | ja | ja         |
+|--------------------------------|--------------|----|------------|
+|let a= () => { …}; a.toString();| ja           | ja | ja         |
+|--------------------------------|--------------|----|------------|
+|Object.fromEntries()            | ja           | ja | ja         |
+|--------------------------------|--------------|----|------------|
+|Null-Coalescing Operator        | ja           | ja | ja         |
+------------------------------------------------------------------
+
+Alle Konstrukte werden von allen angegebenen Engines unterstützt (caniuse.com)
+Bei Bedarf werden die Konstrukte in Abalo integriert

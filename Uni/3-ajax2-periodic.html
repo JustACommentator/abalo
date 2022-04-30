@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    "use strict";
+
+    let div1 = document.createElement("div");
+    document.body.appendChild(div1)
+    let xhr = new XMLHttpRequest();
+    let x = 0;
+    setInterval( () => {
+        xhr.open("GET", "../public/static/message.json")
+        xhr.send()
+        xhr.onload = () => {
+
+            let data = JSON.parse(xhr.responseText);
+            div1.innerText = data["message"] + "\nIteration: " + x;
+            x++;
+        }
+    }, 3000)
+
+</script>
+
+</body>
+</html>
