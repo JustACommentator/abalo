@@ -22,13 +22,14 @@ class AbaloController extends Controller
         return view('searchView', ["search" => $search, "results" => $results]);
     }
 
-    public function newArticle(){
+    public function newArticle(Request $request){
 
-        $name = $_POST['name'] ?? null;
-        $preis = $_POST["preis"] ?? null;
-        $beschreibung = $_POST["beschreibung"] ?? null;
-        Log::info("", [$name, $preis]);
-        $error = null;
+
+        $name = $request->input('name') ?? null;
+        $preis = $request->input('preis') ?? null;
+        $beschreibung = $request->input('preis') ?? null;
+
+        $hasError = false;
         if($name && $preis && $preis > 0){
             $article = new AbArticle();
             $article->ab_name = $name;
@@ -37,8 +38,11 @@ class AbaloController extends Controller
             $article->ab_createdate = Carbon::now()->toDateString();
             $article->ab_creator_id = 1;
             $article->save();
+            $hasError = ! $article->save();
         }
 
-        return view('newArticle', ['error' => $error ?? null]);
+        $message =  $hasError ? "Es ist ein Fehler aufgetreten" : "Erfolgreich";
+
+        return response()->json(["message" => $message]);
     }
 }

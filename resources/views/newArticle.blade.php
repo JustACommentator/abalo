@@ -7,65 +7,75 @@
 <body>
 <script type="text/javascript">
     "use strict";
-    const labels = ['Name', 'Preis', 'Beschreibung']
-    let form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "/newArticle");
-    form.id = 'form';
-
-    let csrftoken = '{{ csrf_token() }}'
-    let csrf = document.createElement('input');
-    csrf.setAttribute("type", "hidden");
-    csrf.setAttribute("name", "_token");
-    csrf.setAttribute("value", csrftoken);
-    form.append(csrf);
-
-    let br = document.createElement("br");
-    labels.forEach((label) => {
-        let labelElement = document.createElement('label');
-        labelElement.innerHTML = label;
-
-        let inputElement = null;
-
-        if(label === 'Name' || label === 'Preis'){
-            inputElement = document.createElement('input');
-            inputElement.setAttribute("type", 'text');
-        } else {
-            inputElement = document.createElement('textarea');
-        }
-        inputElement.setAttribute("name",label.toLowerCase());
-        inputElement.setAttribute("id",label.toLowerCase());
-        form.append(labelElement);
-        form.append(br.cloneNode());
-        form.append(inputElement);
-        form.append(br.cloneNode());
-    });
-
-    let submitElement = document.createElement("button");
-    submitElement.innerHTML = 'Speichern';
-    submitElement.addEventListener('click', submitForm);
-
-
-    document.body.appendChild(form);
-    document.body.appendChild(submitElement);
 
     function  submitForm(){
         let price = document.getElementById('preis').value;
-        let name = document.getElementById('name');
-        let form = document.getElementById('form');
+        let name = document.getElementById('name').value;
+        let beschreibung = document.getElementById('beschreibung').value;
 
-        console.log(price);
         if(name !== null && parseInt(price) > 0){
-            form.submit();
-            console.log('submitted');
+            event.preventDefault();
+            sendData(name, price, beschreibung)
         }
         else{
-            console.log('else block');
         }
     }
+
+    function sendData(name, preis, beschreibung){
+        let xhr = new XMLHttpRequest()
+
+        xhr.open("POST", '/newArticle')
+        xhr.setRequestHeader("X-CSRF-TOKEN", document.getElementById("csrf-token").getAttribute('content'));
+
+        let formData = new FormData()
+        formData.append('name', name)
+        formData.append('preis', preis)
+        formData.append('beschreibung', beschreibung)
+
+        let responseLabel
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    responseLabel = JSON.parse(xhr.responseText)
+                    let label = document.getElementById("message")
+                    label.innerHTML = responseLabel['message']
+                } else {
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error(xhr.statusText)
+        };
+
+        xhr.send(formData)
+
+    }
 </script>
-@if($error)
-    <script>alert(JSON.parse({{$error}}))</script>
-    @endif
+<form>
+    <input type="hidden" id="csrf-token" content="{{ csrf_token() }}">
+    <div>
+        <label for="name"> Name <br>
+            <input name="name" id="name">
+        </label>
+    </div>
+    <div>
+        <label for="preis"> Preis <br>
+            <input name="preis" id="preis">
+        </label>
+    </div>
+    <div>
+        <label for="beschreibung"> Beschreibung <br>
+            <input name="beschreibung" id="beschreibung">
+        </label>
+    </div>
+    <button id="submit" onclick="submitForm()">Speichern</button>
+</form>
+<div>
+    <br>
+    <label id="message"></label>
+</div>
 </body>
 </html>
