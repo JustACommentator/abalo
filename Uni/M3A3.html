@@ -11,14 +11,63 @@
         <li><a id="home">Home</a></li>
         <li><a id="kategorien">Kategorien</a></li>
         <li><a id="verkaufen">Verkaufen</a></li>
-        <li>Unternehmen
-            <ul>
+        <li><a id="unternehmen">Unternehmen</a>
+            <ul id="unternehmenList">
                 <li><a id="philosophie">Philosophie</a></li>
                 <li><a id="karriere">Karriere</a></li>
             </ul>
         </li>
     </ul>
 </nav>
+
+<script type="text/javascript">
+    "use strict";
+
+    class NavMenu {
+        constructor() {
+            this.links = {};
+        }
+
+        addLink(id, link) {
+            this.links[id] = link;
+        }
+
+        openLink(id) {
+            window.open(this.links[id], "_self");
+        }
+    }
+
+    let unternehmenList = document.getElementById("unternehmenList");
+    unternehmenList.style.display = "none";
+
+    let navMenu = new NavMenu();
+    navMenu.addLink("home", "/home");
+    navMenu.addLink("verkaufen", "/verkaufen");
+    navMenu.addLink("philosophie", "/philosophie");
+    navMenu.addLink("karriere", "/karriere");
+
+    let unternehmen = document.getElementById("unternehmen");
+    unternehmen.addEventListener("click", () => {
+        if (unternehmenList.style.display == "none") {
+            unternehmenList.style.display = "block";
+        } else {
+            unternehmenList.style.display = "none";
+        }
+    })
+
+
+    document.getElementById("home").addEventListener("click", () => {
+        navMenu.openLink("home");
+    });
+    document.getElementById("verkaufen").addEventListener("click", () => {
+        navMenu.openLink("verkaufen");
+    });
+    document.getElementById("philosophie").addEventListener("click", () => {
+        navMenu.openLink("philosophie");
+    });
+    document.getElementById("karriere").addEventListener("click", () => {
+        navMenu.openLink("karriere");
+    });
 
 </script>
 
