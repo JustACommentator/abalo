@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Log;
 
 class AbaloController extends Controller
 {
-    public function search() {
+    public function search()
+    {
 
-        $search = $_GET['search'] ?? null;
+        $search = $_GET['search'] ?? "";
         $results = array();
-        if($search != null) {
-                $results = DB::table('article_creator as ac')->select(
-                    'id', 'article_name', 'article_price', 'ab_createdate', 'seller')
-                    ->where("article_name", "ilike", "%$search%")->get();
-        }
+        $results = DB::table('article_creator as ac')->select(
+            'id', 'article_name', 'article_price', 'ab_createdate', 'seller')
+            ->where("article_name", "ilike", "%$search%")->get();
         return view('searchView', ["search" => $search, "results" => $results]);
     }
 
-    public function newArticle(Request $request){
+    public function newArticle(Request $request)
+    {
 
 
         $name = $request->input('name') ?? null;
@@ -30,7 +30,7 @@ class AbaloController extends Controller
         $beschreibung = $request->input('preis') ?? null;
 
         $hasError = false;
-        if($name && $preis && $preis > 0){
+        if ($name && $preis && $preis > 0) {
             $article = new AbArticle();
             $article->ab_name = $name;
             $article->ab_price = $preis;
@@ -38,10 +38,10 @@ class AbaloController extends Controller
             $article->ab_createdate = Carbon::now()->toDateString();
             $article->ab_creator_id = 1;
             $article->save();
-            $hasError = ! $article->save();
+            $hasError = !$article->save();
         }
 
-        $message =  $hasError ? "Es ist ein Fehler aufgetreten" : "Erfolgreich";
+        $message = $hasError ? "Es ist ein Fehler aufgetreten" : "Erfolgreich";
 
         return response()->json(["message" => $message]);
     }

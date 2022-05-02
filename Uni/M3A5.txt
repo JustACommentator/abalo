@@ -8,7 +8,7 @@
 |Object.fromEntries()            | ja           | ja | ja         |
 |--------------------------------|--------------|----|------------|
 |Null-Coalescing Operator        | ja           | ja | ja         |
-------------------------------------------------------------------
+-------------------------------------------------------------------
 
 Alle Konstrukte werden von allen angegebenen Engines unterstützt (caniuse.com)
 Bei Bedarf werden die Konstrukte in Abalo integriert
