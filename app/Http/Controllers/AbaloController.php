@@ -12,7 +12,6 @@ class AbaloController extends Controller
 {
     public function search()
     {
-
         $search = $_GET['search'] ?? "";
         $results = DB::table('article_creator as ac')->select(
             'id', 'article_name', 'article_price', 'ab_createdate', 'seller')
@@ -22,8 +21,6 @@ class AbaloController extends Controller
 
     public function newArticle(Request $request)
     {
-
-
         $name = $request->input('name') ?? null;
         $preis = $request->input('preis') ?? null;
         $beschreibung = $request->input('preis') ?? null;
