@@ -1,76 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style>
-        .navContent > a{
-            text-decoration: none;
+        ul{
+            list-style-type: none;
+        }
+        #menu-items{
+            display: inline;
+            padding: 20px;
+            float: right;
         }
     </style>
 </head>
 <body>
+    <script type="text/javascript">
+        "use strict";
+        const items = ['Unternehmen', 'Verkauf', 'Kategorien','Home'];
+        const underItems = ['Philosophie', 'Karriere'];
+        const navlist = document.createElement("ul");
+        navlist.setAttribute('id', 'navbar');
 
-<script type="text/javascript">
 
-    "use strict";
+        items.forEach((item) => {
+            let listelement = document.createElement("li");
+            listelement.setAttribute('id', 'menu-items');
+            listelement.classList.add('navbar');
+            let element = null;
 
-    let navMenu = document.createElement("nav");
-    navMenu.setAttribute("id", "navMenu");
+            if(item === 'Unternehmen') {
+                listelement.innerText = item
+                element = document.createElement('ul');
+                underItems.forEach((underItem) => {
+                    let underElement = document.createElement('li');
+                    underElement.setAttribute('class', 'dropdown-element');
+                    let item = document.createElement('a');
+                    item.innerText = underItem;
+                    item.href = "#" + underItem;
+                    underElement.append(item);
+                    element.append(underElement);
+                })
+            } else {
+                element = document.createElement("a");
+                element.innerText = item;
+                element.setAttribute("id", item);
+                element.href = "#" + item;
+            }
+            listelement.append(element);
+            navlist.append(listelement);
+        });
 
-    let contentList = document.createElement("ul");
-    contentList.setAttribute("id", "navList");
-
-    let homeList = document.createElement("li");
-    homeList.setAttribute("class", "navContent");
-    homeList.setAttribute("id", "homeList");
-
-    let kategorienList = document.createElement("li");
-    kategorienList.setAttribute("class", "navContent");
-
-    let verkaufenList = document.createElement("li");
-    verkaufenList.setAttribute("class", "navContent");
-
-    let unternehmenList = document.createElement("li");
-    unternehmenList.setAttribute("class", "navContent");
-
-    let unternehmenListInner = document.createElement("ul");
-    unternehmenListInner.setAttribute("class", "navContent");
-
-    let philosophieList = document.createElement("li");
-    philosophieList.setAttribute("class", "navContent");
-
-    let karriereList = document.createElement("li");
-    karriereList.setAttribute("class", "navContent");
-
-    let homeLista = document.createElement("a");
-    homeLista.setAttribute("href", "example1");
-    let verkaufenLista = document.createElement("a");
-    verkaufenLista.setAttribute("href", "example2");
-    let philosophieLista = document.createElement("a");
-    philosophieLista.setAttribute("href", "example3");
-    let karriereLista = document.createElement("a");
-    karriereLista.setAttribute("href", "example4");
-
-    homeLista.innerHTML = "Home";
-    kategorienList.innerHTML = "Kategorien";
-    verkaufenLista.innerHTML = "Verkaufen";
-    unternehmenList.innerHTML = "Unternehmen";
-    philosophieLista.innerHTML = "Philosophie";
-    karriereLista.innerHTML = "Karriere";
-
-    navMenu.append(contentList);
-    contentList.append(homeList, kategorienList, verkaufenList, unternehmenList);
-    unternehmenList.append(unternehmenListInner);
-    unternehmenListInner.append(philosophieList, karriereList);
-
-    homeList.append(homeLista)
-    verkaufenList.append(verkaufenLista);
-    philosophieList.append(philosophieLista);
-    karriereList.append(karriereLista);
-
-    document.body.append(navMenu);
-</script>
-
+        document.body.append(navlist);
+    </script>
 </body>
 </html>

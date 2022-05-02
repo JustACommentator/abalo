@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/articles', function(Request $request){
+    dd($request->get('search'));
+});
+
+Route::post('/articles', [\App\Http\Controllers\AbaloController::class, 'newArticleApi']);

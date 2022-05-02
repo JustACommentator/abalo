@@ -32,4 +32,9 @@ Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'search']
 Route::get('/newArticle', function (){
     return view('newArticle');
 });
+
 Route::post('/newArticle', [\App\Http\Controllers\AbaloController::class, 'newArticle'])->name('newArticle');
+
+Route::get('/new-article-api', function () {
+    return view('newArticleApi');
+});
