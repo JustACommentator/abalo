@@ -14,7 +14,6 @@ class AbaloController extends Controller
     {
 
         $search = $_GET['search'] ?? "";
-        $results = array();
         $results = DB::table('article_creator as ac')->select(
             'id', 'article_name', 'article_price', 'ab_createdate', 'seller')
             ->where("article_name", "ilike", "%$search%")->get();
