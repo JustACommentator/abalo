@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/** @property integer $id */
-/** @property string $ab_name */
-/** @property string $ab_password */
-/** @property string $ab_email */
+/**
+ * @property integer $id
+ * @property string $ab_name
+ * @property string $ab_password
+ * @property string $ab_email
+ */
 class AbUser extends BaseModel
 {
     use HasFactory;
@@ -19,4 +21,5 @@ class AbUser extends BaseModel
         'ab_password',
         'ab_email'
     ];
+
 }

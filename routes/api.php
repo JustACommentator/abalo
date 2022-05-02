@@ -22,4 +22,19 @@ Route::get('/articles', function(Request $request){
     dd($request->get('search'));
 });
 
+Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'searchAPI']);
+
 Route::post('/articles', [\App\Http\Controllers\AbaloController::class, 'newArticleApi']);
+Route::post('/shoppingcart', [\App\Http\Controllers\AbaloController::class, 'shoppingCart']);
+Route::delete('/shoppingcart/{shoppingID}/articles/{articleID}', function ($shoppingID, $articleID){
+    info('Shoppingid: ' . $shoppingID . ', Articleid: ' . $articleID);
+
+    /** @var \App\Models\ShoppingCartItem $item */
+    $item = \App\Models\ShoppingCartItem::query()
+        ->where('ab_shoppingcart_id', '=', $shoppingID)
+        ->where('ab_article_id', '=', $articleID)->first();
+    info('Item:', $item->toArray());
+    $item->forceDelete();
+
+});
+
