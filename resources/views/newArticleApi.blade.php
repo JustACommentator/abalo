@@ -25,18 +25,18 @@
     function sendData(name, preis, beschreibung){
         let xhr = new XMLHttpRequest()
 
-        const params = new URLSearchParams({
+        const params = JSON.stringify({
             'name': name,
             'preis': preis,
             'beschreibung': beschreibung
         });
 
-        let url = '/api/articles?' + params.toString();
+        let url = '/api/articles';
 
 
         xhr.open("POST", url)
         xhr.setRequestHeader("X-CSRF-TOKEN", document.getElementById("csrf-token").getAttribute('content'));
-
+        xhr.setRequestHeader("Content-Type", "application/json")
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -54,7 +54,7 @@
             console.error(xhr.statusText)
         };
 
-        xhr.send()
+        xhr.send(params)
 
     }
 </script>

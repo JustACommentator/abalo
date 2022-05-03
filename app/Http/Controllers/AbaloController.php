@@ -60,6 +60,7 @@ class AbaloController extends Controller
         $preis = $request->input('preis') ?? null;
         $beschreibung = $request->input('preis') ?? null;
 
+        info($name);
         $hasError = false;
 
         $article = null;
