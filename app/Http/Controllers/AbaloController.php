@@ -23,10 +23,14 @@ class AbaloController extends Controller
     }
 
 
-    public function searchAPI(){
-        $search = $_GET['search'] ?? "";
+    public function searchAPI(Request $request){
+        $search = $request->get('searchInput');
 
-        $results = AbArticle::query()->where('ab_name', 'ilike', "%$search%")->get();
+        if($search){
+            $results = AbArticle::query()->where('ab_name', 'ilike', "%$search%")->limit(5)->get();
+        } else{
+            $results = AbArticle::query()->limit(5)->get();
+        }
 
         return response()->json($results);
     }
@@ -60,7 +64,6 @@ class AbaloController extends Controller
         $preis = $request->input('preis') ?? null;
         $beschreibung = $request->input('preis') ?? null;
 
-        info($name);
         $hasError = false;
 
         $article = null;
@@ -114,8 +117,6 @@ class AbaloController extends Controller
             $shoppingCartItem->save();
          }
 
-
-        info('Item: ', $shoppingCartItem->toArray());
 
         return response()->json([
             'id' => $article->id,

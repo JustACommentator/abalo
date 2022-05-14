@@ -27,7 +27,7 @@ Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->n
 Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'isloggedin'])->name('haslogin');
 
 //M1 Aufgabe 10
-Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'search']);
+//Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'search']);
 
 Route::get('/newArticle', function (){
     return view('newArticle');
@@ -37,4 +37,9 @@ Route::post('/newArticle', [\App\Http\Controllers\AbaloController::class, 'newAr
 
 Route::get('/new-article-api', function () {
     return view('newArticleApi');
+});
+
+// M4
+Route::get('/articles', function () {
+    return view('searchVue');
 });
