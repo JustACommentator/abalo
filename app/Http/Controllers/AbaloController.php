@@ -25,15 +25,29 @@ class AbaloController extends Controller
 
     public function searchAPI(Request $request){
         $search = $request->get('searchInput');
-
+        $offset = $request->get('offset');
         if($search){
-            $results = AbArticle::query()->where('ab_name', 'ilike', "%$search%")->limit(5)->get();
+            $results = AbArticle::query()->where('ab_name', 'ilike', "%$search%")->offset($offset)->get();
         } else{
-            $results = AbArticle::query()->limit(5)->get();
+            $results = AbArticle::query()->offset($offset)->get();
         }
 
-        return response()->json($results);
+        $limitedResult = collect();
+        $results->each(function ($item) use($limitedResult){
+            if($limitedResult->count() < 5) {
+                $limitedResult->push($item);
+            } else {
+                return;
+            }
+        });
+
+        $res = [
+            'data_length' => $results->count(),
+            'data' => $limitedResult
+        ];
+        return response()->json($res);
     }
+
     public function newArticle(Request $request){
 
 
@@ -77,7 +91,7 @@ class AbaloController extends Controller
             $hasError = ! $article->save();
         }
 
-        return $hasError  ? response()->json(['Error' => 'Es ist ein Fehler aufgetreten']) : response()->json(['id' => $article?->id]);
+        return $hasError  ? response()->json(['Error' => 'Es ist ein Fehler aufgetreten']) : response()->json(['article' => 'Thank you for creating a article']);
     }
 
 
@@ -124,5 +138,35 @@ class AbaloController extends Controller
             'price' => $article->ab_price,
             'shoppingCart' => $shoppingCart->id
         ]);
+    }
+
+    public function getCurrentShoppingCart()
+    {
+        if(Cache::has('shoppingcart_id')) {
+            $shoppingCart = Cache::get('shoppingcart_id');
+
+            $shoppingCartItems = ShoppingCartItem::query()->where('ab_shoppingcart_id', '=', Cache::get('shoppingcart_id'))?->get();
+
+            $items = collect();
+
+            $shoppingCartItems?->each(function ($item) use($items){
+                $article = AbArticle::query()
+                    ->where('id', '=', $item->ab_article_id)
+                    ->get();
+
+                if($article){
+                    $items->push($article);
+                }
+            });
+
+            $res = collect([
+                'id' => $shoppingCart,
+                'items' => $items
+            ]);
+
+            return response()->json($res);
+        }
+
+        return response()->noContent();
     }
 }

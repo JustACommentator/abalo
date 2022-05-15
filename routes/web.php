@@ -43,3 +43,7 @@ Route::get('/new-article-api', function () {
 Route::get('/articles', function () {
     return view('searchVue');
 });
+
+Route::get('/newsite', function () {
+    return view('newsite');
+});

@@ -18,9 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/articles', function(Request $request){
-    dd($request->get('search'));
-});
 
 Route::get('/articles', [\App\Http\Controllers\AbaloController::class, 'searchAPI']);
 
@@ -37,4 +34,6 @@ Route::delete('/shoppingcart/{shoppingID}/articles/{articleID}', function ($shop
     $item->forceDelete();
 
 });
+
+Route::get('/currentShoppingCart', [\App\Http\Controllers\AbaloController::class, 'getCurrentShoppingCart']);
 
