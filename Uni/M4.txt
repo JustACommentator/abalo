@@ -1,0 +1,28 @@
+Aufgabe 1:
+a) Bei Erstellung eines Vue Components werden die template, script und style Blocks erstellt. 
+Man kann JavaScript und TypeScript innerhalb von script-Tags, Stylesheet-Sprachen innerhalb von style-Tags 
+und HTML und Pug innerhalb von Template-Tags verwenden.
+
+b) Man kann auch eine neue Vue.js-Komponente aus einer vorhandenen extrahieren, ohne sie kopieren und einfügen zu müssen,
+sondern mit einer dedizierten Absichtsaktion oder einem Refactoring. Alle Daten und Methoden, die in der neu extrahierten
+Vorlage verwendet werden, verbleiben in der übergeordneten Komponente. PhpStorm übergibt sie an die neue Komponente mit 
+Eigenschaften und kopiert die zugehörigen Stile.
+
+
+c) Standardmäßig bietet PhpStorm Codevervollständigung für ECMAScript 6 innerhalb von Skriptblöcken und für CSS innerhalb von Stilblöcken.
+
+
+Aufgabe 3:
+a)Die Motivation für die Entwicklung von Vue ist ganz einfach. Der Entwickler wollte seine eigene Arbeit vereinfachen, da er bis dahin keine
+richtige und funktionierende Lösung gefunden hat. Der Ziel war einen Werkzeug zu bereitstellen, der das DOM und JS einfach synchronisiert. 
+
+b)Backbone war kein richtiges Framework sondern eher ein Project Structure und hat keine View Interaktivitätsmanagement
+
+c) Vue ist einfach zu lerner und erfordert nicht wietere Wissens in anderem Tools. Vue konnte ganz einfach in Laravel Spark integriert werden.
+
+d) Nach dem Release von Angular 2.0 waren die Entwickler geschockt, wie anders Angular geworden ist. Im Gegensatz zu Angular and React ist
+Vue viel einfacher zu lernen und verstehen. Nichtsdestotrotz kann Vue das gleiche Power vorweisen wie die anderen beiden Frameworks. Vue versucht
+die besten Eigenschaften aus verschiedenen Frameworks zu übernehmen.
+
+e) open source, gut dokumentiert, einfach zu lernen, viele Tutorials, kontinuierlich weiter entwickelt
+
