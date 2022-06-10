@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+<div id="app">
+    <click-counter></click-counter><br>
+    <click-counter></click-counter><br>
+    <click-counter></click-counter>
+</div>
+
+<script type="module">
+    import ClickCounter from './counter.js'
+    let vm = Vue.createApp({
+        components: {
+            ClickCounter
+        },
+    }).mount('#app');
+</script>
+
+
+
+</body>
+</html>
