@@ -11,10 +11,17 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(Request $request) {
-        $request->session()->put('abalo_user', 'visitor');
+        $visitor = $request->input('visitor');
+
+        if( $visitor) {
+            $request->session()->put('abalo_user', 'visitor');
+        } else {
+            $request->session()->put('abalo_user', 'seller');
+        }
         $request->session()->put('abalo_mail', 'visitor@abalo.example.com');
         $request->session()->put('abalo_time', time());
         return redirect()->route('haslogin');
+
     }
 
     public function logout(Request $request) {

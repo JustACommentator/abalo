@@ -35,5 +35,10 @@ Route::delete('/shoppingcart/{shoppingID}/articles/{articleID}', function ($shop
 
 });
 
+Route::post('/own-articles', [\App\Http\Controllers\AbaloController::class, 'getOwnArticles']);
+
+Route::post('/articles/{id}/sold', [\App\Http\Controllers\AbaloController::class, 'soldArticle']);
+
 Route::get('/currentShoppingCart', [\App\Http\Controllers\AbaloController::class, 'getCurrentShoppingCart']);
 
+Route::post('add-to-promotion', [\App\Http\Controllers\AbaloController::class, 'addToPromotion']);

@@ -169,4 +169,74 @@ class AbaloController extends Controller
 
         return response()->noContent();
     }
+
+
+    public function getOwnArticles(Request $request)
+    {
+        /** @var AbUser $user */
+        $user = AbUser::query()->where('ab_name', $request->input('name'))->first();
+
+
+        $articles = collect(AbArticle::query()->get()->all());
+
+        $ownArticles = collect();
+
+        $articles->each(function (AbArticle $abArticle) use($user, $ownArticles){
+            if($abArticle->ab_creator_id === $user->id){
+                $ownArticles->push($abArticle->id);
+            }
+        });
+
+        return response()->json($ownArticles);
+    }
+
+    public function soldArticle(Request $request)
+    {
+        $id = $request->id;
+
+        /** @var AbArticle $article */
+        $article = AbArticle::query()->find($id);
+
+        /** @var AbUser $user */
+        $user = AbUser::query()->find($article->ab_creator_id);
+        \Ratchet\Client\connect('ws://localhost:8090/chat')->then(function($conn) use ($article, $user){
+            $conn->send(json_encode([
+                'type' => 'sold_article',
+                'user_id' => $user->ab_name,
+                'message' => "Großartig! Ihr Artikel {$article->ab_name} wurde erfolgreich verkauf!"
+            ]));
+            $conn->close();
+        }, function ($e){
+            echo "Could not connect: {$e->getMessage()}";
+        });
+    }
+
+    public function addToPromotion(Request $request)
+    {
+        $id = $request->input('article_id');
+
+        if(!$id){
+            abort(400);
+        }
+
+        /** @var AbArticle $article */
+        $article = AbArticle::query()->find($id);
+        info('Article', $article->toArray());
+        if(!$article){
+            abort(404);
+        }
+
+        \Ratchet\Client\connect('ws://localhost:8080/chat')->then(function($conn) use ($article){
+            $conn->send(json_encode([
+                'type' => 'add_to_promotion',
+                'id' => $article->id,
+                'name' => $article->ab_name,
+            ]));
+            $conn->close();
+        }, function ($e){
+            echo "Could not connect: {$e->getMessage()}";
+        });
+
+    }
+
 }
