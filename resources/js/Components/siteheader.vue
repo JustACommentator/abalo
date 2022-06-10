@@ -4,7 +4,7 @@
             <div class="align-items-start">
                 <p>Abalo</p>
             </div>
-            <div class="align-items-end navbar">
+            <div class="align-items-end navbar menu">
                 <a class="nav-link fa" style="font-size:24px" v-on:click="this.toggleShoppingCart()">&#xf07a;</a>
                 <slot></slot>
             </div>
@@ -39,5 +39,6 @@ export default {
 a:hover{
     cursor: pointer;
 }
+
 
 </style>

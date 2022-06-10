@@ -1,17 +1,17 @@
 <template>
     <div>
-<!--         Header -->
+<!--    slots     Header -->
                 <nav>
                     <siteheader v-on:sendToShoppingCart="selectContent">
-                        <a class="nav-link" v-on:click="this.selectContent('articles')">Home</a>
-                        <a class="nav-link" v-on:click="this.selectContent('new-article')">New Article</a>
-                        <a class="nav-link" v-on:click="this.testLogin(false)">Login</a>
-                        <a class="nav-link" v-on:click="this.testLogin(true)">Test Login</a>
+                        <a class=" menu__item" v-on:click="this.selectContent('articles')">Home</a>
+                        <a class="nav-link menu__item" v-on:click="this.selectContent('new-article')">New Article</a>
+                        <a class=" menu__item" v-on:click="this.testLogin(false)">Login</a>
+                        <a class="nav-link menu__item" v-on:click="this.testLogin(true)">Test Login</a>
                     </siteheader>
                 </nav>
 
         <!--  Extra Komponent für das Video-->
-        <test></test>
+        <!-- <test></test> -->
 
         <!-- Body -->
 

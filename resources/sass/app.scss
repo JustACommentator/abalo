@@ -1,0 +1,42 @@
+$font: "Times New Roman";
+$text-color: #FF7711;
+
+
+.menu {
+    font-family: $font;
+    color: $text-color;
+}
+
+.menu__item {
+    font-family: $font;
+    color: $text-color;
+}
+
+$greenBorder: true;
+
+div {
+    p {
+        @if $greenBorder {
+            border: 0.25 * 4px solid green;
+        } @else {
+            border: 1px solid red;
+        }
+    }
+
+    label {
+        border: 1px solid pink;
+    }
+}
+
+
+.articleList {
+    font-family: $font;
+    color: $text-color;
+}
+
+.articleList__item {
+    font-family: $font;
+    color: $text-color;
+}
+
+//benutzte features: Variablen, Verschachtelung, Operationen, Kontrollsturktur_if

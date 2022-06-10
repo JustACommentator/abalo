@@ -8,7 +8,7 @@
         <div v-if="msg && msg.length" class="alert alert-info" role="alert">
             {{ msg }}
         </div>
-        <div class="container mt-5">
+        <div class="container mt-5 articleList">
             <div class="row p-2 bg-light border">
                 <div class="col-sm-2">
                     #
@@ -24,7 +24,7 @@
                 <div class="col">
                 </div>
             </div>
-            <div v-for="item in searchData" class="row">
+            <div v-for="item in searchData" class="row articleList__item">
                 <div class="col-sm-2">
                     <img v-if="getImgPath(item['id']).length > 0" :src="getImgPath(item['id'])"
                          alt="alt" class="img-thumbnail rounded d-block">

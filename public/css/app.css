@@ -1,0 +1,26 @@
+.menu {
+  font-family: "Times New Roman";
+  color: #FF7711;
+}
+
+.menu__item {
+  font-family: "Times New Roman";
+  color: #FF7711;
+}
+
+div p {
+  border: 1px solid green;
+}
+div label {
+  border: 1px solid pink;
+}
+
+.articleList {
+  font-family: "Times New Roman";
+  color: #FF7711;
+}
+
+.articleList__item {
+  font-family: "Times New Roman";
+  color: #FF7711;
+}

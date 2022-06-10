@@ -5,20 +5,27 @@
         :menu-data="items"
         :on-selected="handleSelection"
         :flip-on-edges="true"
+        :theme="{
+            primary: '#00ff00',
+            textColor: '#ff8800',
+            menuBgColor: '#00ffff',
+            textSelectedColor: '#7300ff'}"
         menu-orientation="bottom"
+        :fixed="true"
     >
         Drag
     </float-menu>
     <float-menu
-        :position="'bottom left'"
-        :dimension="50"
+        :position="'top right'"
+        :dimension="100"
         :menu-data="items"
         :on-selected="handleSelection"
-        :flip-on-edges="true"
+        :flip-on-edges="false"
         menu-style="accordion"
         menu-orientation="bottom"
     >
-        Drag
+
+
     </float-menu>
 </template>
 
@@ -43,7 +50,7 @@ export default {
     data() {
         return {
             items: [
-                { name: "New" },
+                { name: "New", disabled: "true"},
                 {
                     name: "Edit",
                     subMenu: {
