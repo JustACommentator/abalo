@@ -1,24 +1,28 @@
 <template>
     <div>
-        <!-- Header -->
-        <nav>
-            <siteheader v-on:sendToShoppingCart="selectContent">
-                <a class="nav-link" v-on:click="this.selectContent('articles')">Home</a>
-                <a class="nav-link" v-on:click="this.selectContent('new-article')">New Article</a>
-                <a class="nav-link" v-on:click="this.testLogin(false)">Login</a>
-                <a class="nav-link" v-on:click="this.testLogin(true)">Test Login</a>
-            </siteheader>
-        </nav>
+<!--         Header -->
+                <nav>
+                    <siteheader v-on:sendToShoppingCart="selectContent">
+                        <a class="nav-link" v-on:click="this.selectContent('articles')">Home</a>
+                        <a class="nav-link" v-on:click="this.selectContent('new-article')">New Article</a>
+                        <a class="nav-link" v-on:click="this.testLogin(false)">Login</a>
+                        <a class="nav-link" v-on:click="this.testLogin(true)">Test Login</a>
+                    </siteheader>
+                </nav>
+
+        <!--  Extra Komponent für das Video-->
+        <test></test>
 
         <!-- Body -->
 
         <sitebody class="container">
-            <div  class="alert alert-info" role="alert" v-if="has_servicing_msg">
+            <div v-if="has_servicing_msg" class="alert alert-info" role="alert">
                 {{ this.servicing_msg }}
             </div>
 
             <div v-if="this.selected_content === 'articles' ">
-                <articlesearch :promotion-socket="this.promotion_socket" :own_articles="this.ownArticles"></articlesearch>
+                <articlesearch :own_articles="this.ownArticles"
+                               :promotion-socket="this.promotion_socket"></articlesearch>
             </div>
             <div v-else-if="this.selected_content === 'new-article' ">
                 <newarticle></newarticle>
@@ -49,13 +53,15 @@ import sitefooter from "../Components/sitefooter";
 import newarticle from "../Components/newarticle";
 import impressum from "../Components/impressum";
 import shoppingcart from "../Components/shoppingcart";
+import test from "../Components/test";
+
 
 export default {
-    components:{
-        articlesearch, sitebody, sitefooter, siteheader, newarticle, impressum, shoppingcart
+    components: {
+        test , articlesearch, sitebody, sitefooter, siteheader, newarticle, impressum, shoppingcart
     },
     mounted() {
-       this.testLogin(false)
+        this.testLogin(false)
         //this.warning()
         //this.selling()
     },
@@ -75,13 +81,13 @@ export default {
         }
     },
     props: {
-        selectedContent : {
+        selectedContent: {
             String,
             default: 'articles'
         }
     },
     methods: {
-        selectContent(content){
+        selectContent(content) {
             this.selected_content = content
         },
 
@@ -91,10 +97,10 @@ export default {
                 'visitor': visitor
             })
 
-            const { data } = await axios.get('/isloggedin')
+            const {data} = await axios.get('/isloggedin')
             this.current_user = data['user']
 
-            if(this.selling_socket){
+            if (this.selling_socket) {
                 this.selling_socket.send(JSON.stringify({
                     'type': 'register_user',
                     'user_id': this.current_user
@@ -106,8 +112,8 @@ export default {
                 'name': this.current_user
             }).then(response => {
                 this.ownArticles = response.data
-            }).catch (e => {
-               console.log(e)
+            }).catch(e => {
+                console.log(e)
             })
 
         },
@@ -127,7 +133,7 @@ export default {
                 try {
                     this.servicing_msg = messageEvent['data']
                     this.has_servicing_msg = true
-                } catch(err) {
+                } catch (err) {
                     console.log('Error: ', err.message)
                 }
 
@@ -147,7 +153,7 @@ export default {
                     console.log(messageEvent.data)
                     this.servicing_msg = messageEvent.data
                     this.has_servicing_msg = true
-                } catch(err) {
+                } catch (err) {
                     console.log('Error: ', err.message)
                 }
             }
@@ -157,13 +163,14 @@ export default {
 </script>
 
 <style scoped>
-    footer{
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        margin-top: 100px;
-    }
-    a:hover{
-        cursor: pointer;
-    }
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 100px;
+}
+
+a:hover {
+    cursor: pointer;
+}
 </style>
